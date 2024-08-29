@@ -322,3 +322,47 @@ void Matrice::print() const
     }
     std::cout << "]" << std::endl;
 }
+
+
+Matrice operator+(double lhs, const Matrice& rhs) {
+    std::vector<std::vector<double>> output = rhs.data;
+    for (auto& row : output) {
+        for (auto& element : row) {
+            element = lhs + element;
+        }
+    }
+    return Matrice(output);
+}
+
+Matrice operator-(double lhs, const Matrice& rhs) {
+    std::vector<std::vector<double>> output = rhs.data;
+    for (auto& row : output) {
+        for (auto& element : row) {
+            element = lhs - element;
+        }
+    }
+    return Matrice(output);
+}
+
+Matrice operator*(double lhs, const Matrice& rhs) {
+    std::vector<std::vector<double>> output = rhs.data;
+    for (auto& row : output) {
+        for (auto& element : row) {
+            element = lhs * element;
+        }
+    }
+    return Matrice(output);
+}
+
+Matrice operator/(double lhs, const Matrice& rhs) {
+    std::vector<std::vector<double>> output = rhs.data;
+    for (auto& row : output) {
+        for (auto& element : row) {
+            if (element == 0) {
+                throw std::invalid_argument("Division by zero in matrix element");
+            }
+            element = lhs / element;
+        }
+    }
+    return Matrice(output);
+}

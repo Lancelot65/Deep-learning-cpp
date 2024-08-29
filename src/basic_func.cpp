@@ -36,10 +36,45 @@ Matrice linspace(double start, double end, int num)
     return Matrice(output);
 }
 
+double fRand(double fMin, double fMax) {
+    static std::random_device rd;
+    static std::mt19937 gen(rd());
+    std::uniform_real_distribution<> dis(fMin, fMax);
+    return dis(gen);
+}
+
+Matrice random(Shape shape, double min, double max)
+{
+    std::vector<std::vector<double>> output(shape.row, std::vector<double>(shape.column));
+    for (std::vector<double> &vector : output)
+    {
+        for (double &value : vector)
+        {
+            value = fRand(min, max);
+        }
+        
+    }
+    return Matrice(output);
+}
+
 void print_vector(std::vector<double> vector)
 {
     for (const auto& val : vector)
     {
         std::cout << val << " ";
     }
+}
+
+Matrice matrice_exp(Matrice matrice)
+{
+    std::vector<std::vector<double>> output = matrice.get_matrice();
+    for (std::vector<double> &vector : output)
+    {
+        for (double &value : vector)
+        {
+            value = exp(value);
+        }
+        
+    }
+    return Matrice(output);
 }

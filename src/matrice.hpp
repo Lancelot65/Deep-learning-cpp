@@ -45,27 +45,26 @@ public:
 
     Matrice operator+(double add) const;
     void operator+=(double add);
-
     Matrice operator-(double add) const;
     void operator-=(double add);
-
     Matrice operator*(double add) const;
     void operator*=(double add);
-
     Matrice operator/(double add) const;
     void operator/=(double add);
 
     Matrice operator+(const Matrice& matrice_bis) const;
     void operator+=(const Matrice& matrice_bis);
-
     Matrice operator-(const Matrice& matrice_bis) const;
     void operator-=(const Matrice& matrice_bis);
-
     Matrice operator*(const Matrice& matrice_bis) const;
     void operator*=(const Matrice& matrice_bis);
-
     Matrice operator/(const Matrice& matrice_bis) const;
     void operator/=(const Matrice& matrice_bis);
+
+    friend Matrice operator+(double lhs, const Matrice& rhs);
+    friend Matrice operator-(double lhs, const Matrice& rhs);
+    friend Matrice operator*(double lhs, const Matrice& rhs);
+    friend Matrice operator/(double lhs, const Matrice& rhs);
 
     Matrice dot(const Matrice& matrice_bis) const;
 
